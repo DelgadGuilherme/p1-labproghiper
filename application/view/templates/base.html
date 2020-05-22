@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+        <title>Projeto WebTheater </title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+              <a class="navbar-brand" href="{{url_for('home')}}">Projeto WebTheater</a>
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Categoria 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Categoria 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Categoria 3</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+              </form>
+            </div>
+          </nav>
+
+        {% block body %}{% endblock %}
+
+          <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2020 - Todos os direitos reservados - Guilherme Mendes</p>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                    <p class="float-right">
+                        <a href="#">Voltar ao topo</a>
+                    </p>
+                </li>
+            </ul>
+          </footer>
+        
+        <script scr="{{url_for('static', filename='js/jquery-3.5.0.min', _external=true)}}"></script>
+        <script scr="{{url_for('static', filename='js/bootstrap.min.js', _external=true)}}"></script>
+    </body>
+</html>

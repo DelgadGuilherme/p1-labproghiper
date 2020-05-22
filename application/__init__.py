@@ -1,9 +1,9 @@
 from flask import Flask
 import os
 
-app = Flask(__name__)
+template_folder = os.path.abspath('application/view/templates')
+static_folder = os.path.abspath('application/view/static')
 
+app = Flask(__name__,template_folder = template_folder, static_folder = static_folder)
 
-@app.route("/")
-def home():
-    return "<h1>alo mundo</h1> "
+from application.controller import index_controller
