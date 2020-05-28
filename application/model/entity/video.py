@@ -5,9 +5,9 @@ class Video:
         self._descricao = descricao
         self._videoURL = videoURL
         self._fotoURL = fotoURL
-        self._comentarios = []
         self._qntVisualizacao = 0
         self._qntCurtida = 0
+        self._comentario = []
 
     def get_titulo(self):
         return self._titulo
@@ -36,14 +36,11 @@ class Video:
     def get_id(self):
         return self._id
 
-    #def set_data(self,data):
-    #   self._data = data
+    def set_comentario(self,comentario):     
+        self._comentario.append(comentario)
 
-    #def get_data(self):
-    #   return self._data
-
-    def set_comentario(self,comentario):
-        self._comentarios.append(comentario)
+    def get_comentario(self):
+        return self._comentario
 
 
    

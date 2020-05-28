@@ -1,6 +1,12 @@
-class videoDAO:
+class VideoDAO:
     def __init__(self):
-        pass
+        self._comentario_list = []
+    
+    def inserir(self,comentario):
+        self._comentario_list.append(comentario)
+
+    def listar(self):
+        return self._comentario_list
 
     def somar_visualizacao(self,video):
         originalVisualizacao = video.get_qntVisualizacao()

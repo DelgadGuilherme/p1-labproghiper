@@ -1,5 +1,5 @@
 class Comentario:
-    def __init__(self,autor,conteudo)
+    def __init__(self,autor,conteudo):
         self._autor = autor
         self._conteudo = conteudo
 

@@ -21,8 +21,33 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
           <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
-          <li class="list-group-item">Formulario de comentarios entra aqui</li>
-          <li class="list-group-item">Provavelmente vai ser exibido comentarios aqui</li>
+          <li class="list-group-item">
+            <form action="{{url_for('inserir',categoria_id = categoria.get_id(), video_id = video.get_id())}}" method="POST">
+              <div class="row">
+                <div class="col">
+                  <label for="inputNome">Nome: </label>
+                  <input type="text" class="form-control" id="inputNome" name="nome">
+                </div>
+                <div class="col">
+                  <label for="InputComentario">Digite seu comentario</label>
+                  <input type="textarea" class="form-control" id="InputComentario" name="coment">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+          </li>
+          <li class="list-group-item">
+                {% for comentario in video.get_comentario() %}
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">{{comentario.get_autor()}}</h5>
+                        <p class="card-text">{{comentario.get_conteudo()}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+      
+
+          </li>
         </ul>
       </div>
     </div>

@@ -10,3 +10,5 @@ def categoria(categoria_id):
     categoria_dao = CategoriaDAO()
     categoria_lista = categoria_dao.listar()
     return render_template("categoria.html", categoria=categoria,categoria_lista = categoria_lista)
+
+
