@@ -2,25 +2,32 @@
 {% block body %}
 
 <div class="container">
-  <div class="card">
-    <video class="img-fluid" playsinline autoplay muted loop>
-    <source src="{{url_for('static', filename=video.get_videoURL())}}" type="video/mp4">
-    </video>
-    <div class="card-body">
-      <h4 class="card-title">{{video.get_titulo()}}</h4>
-      <p class="card-text">{{video.get_descricao()}}</p>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{video.get_titulo()}}</h4>
+        <p class="card-text">{{video.get_descricao()}}</p>
+      </div>
+        <video class="img-fluid" playsinline autoplay muted loop>
+        <source src="{{url_for('static', filename=video.get_videoURL())}}" type="video/mp4">
+        </video>
     </div>
   </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
-      Dados do Video
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Dados do video:</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
+          <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
+          <li class="list-group-item">Formulario de comentarios entra aqui</li>
+          <li class="list-group-item">Provavelmente vai ser exibido comentarios aqui</li>
+        </ul>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Curtidas Aqui</li>
-      <li class="list-group-item">Formulario de comentarios entra aqui</li>
-      <li class="list-group-item">Provavelmente vai ser exibido comentarios aqui</li>
-    </ul>
   </div>
 </div>
 
 {%endblock%}
+
