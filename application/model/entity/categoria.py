@@ -1,7 +1,9 @@
 class Categoria:
-    def __init__(self,titulo,descricao,video_lista):
+    def __init__(self,id,titulo,descricao,fotoURL,video_lista):
+        self._id = id
         self._titulo = titulo
         self._descricao = descricao
+        self._fotoURL = fotoURL
         self._video_lista = video_lista
 
     def get_titulo(self):
@@ -13,8 +15,8 @@ class Categoria:
     def get_video_lista(self):
         return self._video_lista
 
-    def set_id(self,id):
-        self._id = id
-
     def get_id(self):
         return self._id
+
+    def get_fotoURL(self):
+        return self._fotoURL

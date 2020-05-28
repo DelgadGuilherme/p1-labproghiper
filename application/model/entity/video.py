@@ -1,11 +1,13 @@
-class Videos:
-    def __init__(titulo,descricao,fotoURL,videoURL,categoria):
+class Video:
+    def __init__(self,id,titulo,descricao,fotoURL,videoURL):
+        self._id = id
         self._titulo = titulo
         self._descricao = descricao
         self._videoURL = videoURL
         self._fotoURL = fotoURL
-        self._categoria = categoria
         self._comentarios = []
+        self._qntVisualizacao = 0
+        self._qntCurtida = 0
 
     def get_titulo(self):
         return self._titulo
@@ -31,20 +33,14 @@ class Videos:
     def get_fotoURL(self):
         return self._fotoURL
 
-    def get_categoria(self):
-        return self._categoria
-
-    def set_id(self,id):
-        self._id = id
-
     def get_id(self):
         return self._id
 
-    def set_data(self,data):
-        self._data = data
+    #def set_data(self,data):
+    #   self._data = data
 
-    def get_data(self):
-        return self._data
+    #def get_data(self):
+    #   return self._data
 
     def set_comentario(self,comentario):
         self._comentarios.append(comentario)
