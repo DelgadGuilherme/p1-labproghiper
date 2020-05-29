@@ -6,7 +6,7 @@ from application.model.entity.categoria import Categoria
 from application.model.entity.comentario import Comentario
 from flask import render_template, request
 
-@app.route("/categoria/<categoria_id>/video/<video_id>", methods=['GET', 'POST'])
+@app.route("/categoria/<categoria_id>/video/<video_id>", methods=['GET'])
 def video(categoria_id,video_id):
     categoria = CategoriaDAO().buscar_por_id(categoria_id)
     categoria_dao = CategoriaDAO()
@@ -19,6 +19,9 @@ def video(categoria_id,video_id):
     return render_template("video.html", video = video, categoria=categoria, categoria_lista = categoria_lista, comentario_lista = comentario_lista)
 
 
+
+
+'''
 @app.route("/categoria/<categoria_id>/video/<video_id>/inserir", methods=['POST'])
 def inserir(categoria_id,video_id):
     categoria = CategoriaDAO().buscar_por_id(categoria_id)
@@ -34,3 +37,4 @@ def inserir(categoria_id,video_id):
     comentario_lista = video.get_comentario()
 
     return render_template("video.html", video = video, categoria=categoria, categoria_lista = categoria_lista, comentario_lista = comentario_lista), 201, {'content-type': "text/html"}
+'''

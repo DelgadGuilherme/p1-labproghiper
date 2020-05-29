@@ -16,7 +16,7 @@
 
 <div class="container p-5">
   <div class="card-group">
-    {% for video in curtidos_mais_lista %}
+    {% for video in mais_curtidos_lista %}
     <div class="card text-center">
       <img src="{{url_for('static', filename=video.get_fotoURL())}}" class="card-img-top">
       <div class="card-body">

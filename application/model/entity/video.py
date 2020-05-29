@@ -1,12 +1,12 @@
 class Video:
-    def __init__(self,id,titulo,descricao,fotoURL,videoURL):
+    def __init__(self,id,titulo,descricao,fotoURL,videoURL,qntVisualizacao,qntCurtida):
         self._id = id
         self._titulo = titulo
         self._descricao = descricao
         self._videoURL = videoURL
         self._fotoURL = fotoURL
-        self._qntVisualizacao = 0
-        self._qntCurtida = 0
+        self._qntVisualizacao = qntVisualizacao
+        self._qntCurtida = qntCurtida
         self._comentario = []
 
     def get_titulo(self):
