@@ -14,9 +14,8 @@
 </div>
 
 <div class = "container">
-    
-    {% for video in categoria.get_video_lista() %}
     <div class="row justify-content-center">
+      {% for video in categoria.get_video_lista() %}
         <div class="col-lg-6 mb-4 mt-5">
           <div class="card">
             <img src="{{url_for('static', filename=video.get_fotoURL())}}" >
@@ -28,8 +27,9 @@
             </div>
           </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
 </div>
  
 {%endblock%}

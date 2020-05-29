@@ -15,11 +15,7 @@
               <a class="navbar-brand" href="{{url_for('home')}}">Inicio</a>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                  {%for categoria in categoria_lista %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('categoria',categoria_id = categoria.get_id())}}">{{categoria.get_titulo()}}</a>
-                  </li>
-                  {% endfor %}
+    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                   <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
@@ -30,6 +26,7 @@
           </nav>
 
         {% block body %}{% endblock %}
+        
         <div class="container">
           <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">&copy; 2020 - Todos os direitos reservados - Guilherme Mendes</p>

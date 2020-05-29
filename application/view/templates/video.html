@@ -9,9 +9,7 @@
         <h4 class="card-title">{{video.get_titulo()}}</h4>
         <p class="card-text">{{video.get_descricao()}}</p>
       </div>
-        <video class="img-fluid" playsinline autoplay muted loop>
-        <source src="{{url_for('static', filename=video.get_videoURL())}}" type="video/mp4">
-        </video>
+        <video  class="img-fluid"  controls src="{{url_for('static', filename=video.get_videoURL())}}" type="video/mp4"></video>
     </div>
   </div>
   <div class="col-sm-6">
@@ -22,7 +20,7 @@
           <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
           <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
           <li class="list-group-item">
-            <form action="{{url_for('inserir',categoria_id = categoria.get_id(), video_id = video.get_id())}}" method="POST">
+            <form action="{{url_for('video',categoria_id = categoria.get_id(), video_id = video.get_id())}}" method="POST">
               <div class="row">
                 <div class="col">
                   <label for="inputNome">Nome: </label>

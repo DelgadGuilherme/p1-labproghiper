@@ -1,29 +1,32 @@
 {% extends 'base.html' %}
 {% block body %}
 
+<div class=container>
+  <div class="row">
+    {%for categoria in categoria_lista %}
+      <div class="col-lg-6 text-center mt-4">
+          <img src="{{url_for('static', filename=categoria.get_fotoURL())}}" alt="ERA PRA VIR A FOTO" class="rounded-circle">
+        <h2>{{categoria.get_titulo()}}</h2>
+        <p>{{categoria.get_descricao()}}</p>
+        <p><a class="btn btn-secondary" href="{{url_for('categoria', categoria_id = categoria.get_id())}}" role="button">Ir para categoria</a></p>
+      </div>
+    {%endfor%}
+  </div>
+</div>
+
 <div class="container p-5">
   <div class="card-group">
-    <div class="card">
-      <img src="{{url_for('static', filename='img/ham1.png')}}" class="card-img-top">
+    {% for video in curtidos_mais_lista %}
+    <div class="card text-center">
+      <img src="{{url_for('static', filename=video.get_fotoURL())}}" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">Video mais curtido 1</h5>
-        <p class="card-text">Descrição video mais curtido 1</p>
+        <h5 class="card-title">{{video.get_titulo()}}</h5>
+        <p class="card-text">{{video.get_descricao()}}</p>
+        <p class="card-text">{{video.get_qntCurtida()}} curtidas {{video.get_qntVisualizacao()}} Visualizações</p>
+        <p><a class="btn btn-secondary" href="{{url_for('video',categoria_id = categoria.get_id(), video_id = video.get_id())}}" role="button">Ir para video</a></p>
       </div>
     </div>
-    <div class="card">
-      <img src="{{url_for('static', filename='img/ham2.jpg')}}" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Video mais curtido 2</h5>
-        <p class="card-text">Descrição video mais curtido 2</p>
-      </div>
-    </div>
-    <div class="card">
-      <img src="{{url_for('static', filename='img/ham3.png')}}" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Video mais curtido 3</h5>
-        <p class="card-text">Descrição video mais curtido 3</p>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
