@@ -8,9 +8,16 @@ class Video:
         self._qntVisualizacao = qntVisualizacao
         self._qntCurtida = qntCurtida
         self._comentario = []
+        
 
     def get_titulo(self):
         return self._titulo
+
+    def set_categoria(self,categoria):
+        self._categoria = categoria
+
+    def get_categoria(self):
+        return self._categoria
 
     def get_descricao(self):
         return self._descricao
