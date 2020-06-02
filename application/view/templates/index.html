@@ -23,7 +23,7 @@
         <h5 class="card-title">{{video.get_titulo()}}</h5>
         <p class="card-text">{{video.get_descricao()}}</p>
         <p class="card-text">{{video.get_qntCurtida()}} curtidas {{video.get_qntVisualizacao()}} Visualizações</p>
-        <p><a class="btn btn-secondary" href="{{url_for('video',categoria_id = categoria.get_id(), video_id = video.get_id())}}" role="button">Ir para video</a></p>
+        <p><a class="btn btn-secondary" href="{{url_for('video', video_id = video.get_id())}}" role="button">Ir para video</a></p>
       </div>
     </div>
     {% endfor %}

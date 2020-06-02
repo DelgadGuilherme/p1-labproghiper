@@ -23,13 +23,12 @@
               <h5 class="card-title">{{video.get_titulo()}}</h5>
               <p class="card-text">{{video.get_descricao()}}</p>
               <p class="card-text"><small class="text-muted">{{video.get_qntCurtida()}}</small></p>
-              <a href="{{url_for('video',categoria_id = categoria.get_id(), video_id = video.get_id())}}" class="card-link">Veja o video!</a>
+              <a href="{{url_for('video', video_id = video.get_id())}}" class="card-link">Veja o video!</a>
             </div>
           </div>
         </div>
         {% endfor %}
     </div>
-
 </div>
  
 {%endblock%}

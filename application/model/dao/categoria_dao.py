@@ -1,31 +1,20 @@
 from application.model.entity.categoria import Categoria
 from application.model.entity.video import Video
 
+from flask import current_app
+
 class CategoriaDAO:
     def __init__(self):
-        video1 = Video(1,"De boas","Um gato de boas se espreguiçando",'img/img_video/gato1.png','video/gato1.mp4',10,2)
-        video2 = Video(2,"Hora de nanar","Uma gata indo dormir com seus filhotinhos",'img/img_video/gato2_1.png','video/gato2.mp4',10,4)
-        video3 = Video(3,"Iti, o fofo","Uum cachorro dentro da caixa de boca aberta",'img/img_video/cachorro1.png','video/cachorro2.mp4',10,20)
-        video4 = Video(4,"Hora da diversão","Dois cachorros brincando no parque",'img/img_video/cachorro2.png','video/cachorro1.mp4',20,3)
-        self._video_list = [video1,video2,video4,video3]
-        self._categoria_list = []
-        self._categoria_list.append(Categoria(1,"Gatinhos","Nessa categoria voce pode ver uns gatos muitos fofos",'img/img_categoria/gato.jpg',[video1,video2]))
-        self._categoria_list.append(Categoria(2,"Cachorrinhos","Nessa categoria voce pode ver uns cachorros muitos fofos",'img/img_categoria/cachorro.png',[video3,video4]))
+        pass
 
-    def listar(self):
+    def listar_categoria(self):
         return self._categoria_list
 
-    def listar_video(self):
-        return self._video_list
+    def listar_video_categoria(self,categoria):
+        return categoria.get_video_lista
 
-    def buscar_por_id(self, id):
-        for i in range(0, len(self._categoria_list)):
-            if self._categoria_list[i].get_id() == int(id):
-                return self._categoria_list[i] 
-        return None
-
-    def buscar_video_por_id(self,categoria,id):
-        for i in range(0, len(categoria._video_lista)):
-            if categoria._video_lista[i].get_id() == int(id):
-                return categoria._video_lista[i] 
+    def buscar_por_id(self, id, categoria_list):
+        for i in range(0, len(categoria_list)):
+            if categoria_list[i].get_id() == int(id):
+                return categoria_list[i] 
         return None

@@ -19,8 +19,9 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
           <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
+          <li class="list-group-item text-center"  ><button type="submit" class="btn btn-primary">Curtir</button></li>
           <li class="list-group-item">
-            <form action="{{url_for('video',categoria_id = categoria.get_id(), video_id = video.get_id())}}" method="POST">
+            <form id="form-comentario" action="{{url_for('inserir', video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
               <div class="row">
                 <div class="col">
                   <label for="inputNome">Nome: </label>
@@ -34,23 +35,50 @@
               </div>
             </form>
           </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6" id="minha-div">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Comentarios</h5>
+        <ul class="list-group list-group-flush">
           <li class="list-group-item">
                 {% for comentario in video.get_comentario() %}
-                    <div class="card">
+                    <div class="card" id="lista-coment">
                         <div class="card-body">
                         <h5 class="card-title">{{comentario.get_autor()}}</h5>
                         <p class="card-text">{{comentario.get_conteudo()}}</p>
                         </div>
                     </div>
                 {% endfor %}
-      
-
           </li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+<script>
+ function submitForm(formElement){
+ var xhr = new XMLHttpRequest();
+ xhr.open(formElement.method, formElement.getAttribute("action"));
+ xhr.send(new FormData(formElement));
+ return false;}
+</script>
+
+<script>
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+   if(xhr.readyState == 4 && xhr.status == 200) {
+   document.getElementById("minha-div").innerHTML = xhr.response;
+   }
+  }
+  xhr.open("GET", "/comentario");
+  xhr.setRequestHeader("Accept", "text/html")
+  xhr.send();
+  </script>
+
 
 {%endblock%}
 

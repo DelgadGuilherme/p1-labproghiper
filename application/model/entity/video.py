@@ -1,13 +1,15 @@
+from flask import current_app
+
 class Video:
-    def __init__(self,id,titulo,descricao,fotoURL,videoURL,qntVisualizacao,qntCurtida):
+    def __init__(self,id,titulo,descricao,fotoURL,videoURL):
         self._id = id
         self._titulo = titulo
         self._descricao = descricao
         self._videoURL = videoURL
         self._fotoURL = fotoURL
-        self._qntVisualizacao = qntVisualizacao
-        self._qntCurtida = qntCurtida
         self._comentario = []
+        self._qntVisualizacao = 0
+        self._qntCurtida = 0
         
 
     def get_titulo(self):
@@ -44,7 +46,7 @@ class Video:
         return self._id
 
     def set_comentario(self,comentario):     
-        self._comentario.append(comentario)
+        self._comentario.insert(0,comentario)
 
     def get_comentario(self):
         return self._comentario
