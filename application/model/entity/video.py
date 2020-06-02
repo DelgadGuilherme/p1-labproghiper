@@ -1,5 +1,3 @@
-from flask import current_app
-
 class Video:
     def __init__(self,id,titulo,descricao,fotoURL,videoURL):
         self._id = id

@@ -19,7 +19,9 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
           <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
-          <li class="list-group-item text-center"  ><button type="submit" class="btn btn-primary">Curtir</button></li>
+          <li class="list-group-item text-center"  >
+            <button  class="btn btn-primary" id="curti">Curtir</button>
+          </li>
           <li class="list-group-item">
             <form id="form-comentario" action="{{url_for('inserir', video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
               <div class="row">
@@ -55,10 +57,28 @@
                 {% endfor %}
           </li>
         </ul>
-      </div>
+    </div>
     </div>
   </div>
 </div>
+
+
+<script>
+  var btnCurtida = $("#curti")
+  btnCurtida.click(function() {
+      $.ajax({
+          url: "/video/curti",
+          data: {
+              video_id: parseInt("{{video.get_id()}}")
+          },
+          method: "POST"
+      }).done(function(data) {
+          console.log(data)
+      })
+  })
+</script>
+ 
+<!--
 <script>
  function submitForm(formElement){
  var xhr = new XMLHttpRequest();
@@ -71,14 +91,16 @@
   let xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
    if(xhr.readyState == 4 && xhr.status == 200) {
-   document.getElementById("minha-div").innerHTML = xhr.response;
+     console.log('submited!');
+     
+    document.getElementById("minha-div").innerHTML = xhr.response;
    }
   }
-  xhr.open("GET", "/comentario");
+  xhr.open("POST", "/comentario");
   xhr.setRequestHeader("Accept", "text/html")
   xhr.send();
   </script>
 
-
+-->
 {%endblock%}
 

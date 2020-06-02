@@ -1,5 +1,3 @@
-from flask import current_app
-
 class Categoria:
     def __init__(self,id,titulo,descricao,fotoURL,video_lista):
         self._id = id
