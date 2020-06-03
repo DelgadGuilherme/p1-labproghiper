@@ -17,7 +17,7 @@ def video(video_id):
     return render_template("video.html", video = video, categoria_lista = categoria_list, comentario_lista = comentario_lista)
 
 
-@app.route("/video/<video_id>/comentario", methods=['POST'])
+@app.route('/video/<video_id>/comentario', methods=['POST'])
 def inserir(video_id):
     video_dao = VideoDAO()
     video = video_dao.buscar_video_por_id(int(video_id))
@@ -26,14 +26,14 @@ def inserir(video_id):
     comentario = Comentario(autor,coment)
     video.set_comentario(comentario)
     comentario_lista = video.get_comentario()
-    return render_template("video.html", video = video, categoria_lista = categoria_list, comentario_lista = comentario_lista), 201, {'content-type': "text/html"}
+    mensagens = ['Produto cadastro com sucesso', 'Imagem armazenada com sucesso']
+    return render_template('comentario.html', video = video, comentario_lista = comentario_lista)
 
 
-@app.route("/video/curti", methods=['POST'])
-def curtir():
-    video_id = (request.form["video_id"])
+@app.route("/video/<video_id>/curti", methods=['POST'])
+def curtir(video_id):
     video_dao = VideoDAO()
     video = video_dao.buscar_video_por_id(int(video_id))
     video_dao.somar_curtida(video)
-    return render_template("video.html", video = video, categoria_lista = categoria_list, comentario_lista = comentario_lista), 201, {'content-type': "text/html"}
+    return render_template("curtida.html", video = video), 201, {'content-type': "text/html"}
 

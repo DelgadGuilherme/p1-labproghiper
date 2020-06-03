@@ -17,13 +17,13 @@
       <div class="card-body">
         <h5 class="card-title">Dados do video:</h5>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Quantidades de curtidas: {{video.get_qntCurtida()}}</li>
+          <div id="div-curtida"><li class="list-group-item">Quantidades de curtida: {{video.get_qntCurtida()}}</li></div>
           <li class="list-group-item">Quantidades de visualização: {{video.get_qntVisualizacao()}}</li>
           <li class="list-group-item text-center"  >
-            <button  class="btn btn-primary" id="curti">Curtir</button>
+            <button  class="btn btn-primary" id="curti" onclick="curtir()">Curtir</button>
           </li>
           <li class="list-group-item">
-            <form id="form-comentario" action="{{url_for('inserir', video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
+            <form enctype="multipart/form-data" action="{{url_for('inserir',video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
               <div class="row">
                 <div class="col">
                   <label for="inputNome">Nome: </label>
@@ -41,20 +41,20 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6" id="minha-div">
+  <div class="col-sm-6" >
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" id="div-comentario">
         <h5 class="card-title">Comentarios</h5>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-                {% for comentario in video.get_comentario() %}
-                    <div class="card" id="lista-coment">
-                        <div class="card-body">
-                        <h5 class="card-title">{{comentario.get_autor()}}</h5>
-                        <p class="card-text">{{comentario.get_conteudo()}}</p>
-                        </div>
-                    </div>
-                {% endfor %}
+            {% for comentario in video.get_comentario() %}
+              <div class="card" id="lista-coment">
+                <div class="card-body">
+                  <h5 class="card-title">{{comentario.get_autor()}}</h5>
+                  <p class="card-text">{{comentario.get_conteudo()}}</p>
+               </div>
+              </div>
+            {% endfor %}
           </li>
         </ul>
     </div>
@@ -62,45 +62,37 @@
   </div>
 </div>
 
-
 <script>
-  var btnCurtida = $("#curti")
-  btnCurtida.click(function() {
-      $.ajax({
-          url: "/video/curti",
-          data: {
-              video_id: parseInt("{{video.get_id()}}")
-          },
-          method: "POST"
-      }).done(function(data) {
-          console.log(data)
-      })
-  })
-</script>
- 
-<!--
-<script>
- function submitForm(formElement){
- var xhr = new XMLHttpRequest();
- xhr.open(formElement.method, formElement.getAttribute("action"));
- xhr.send(new FormData(formElement));
- return false;}
-</script>
-
-<script>
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-   if(xhr.readyState == 4 && xhr.status == 200) {
-     console.log('submited!');
-     
-    document.getElementById("minha-div").innerHTML = xhr.response;
-   }
+  function submitForm(formElement){
+    var formData = new FormData(formElement);
+    var xhr = new XMLHttpRequest();
+    xhr.open(formElement.method, formElement.action);
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        document.getElementById('div-comentario').innerHTML = xhr.response;
+        };
+      };
+    xhr.send(formData);
+    return false;
   }
-  xhr.open("POST", "/comentario");
-  xhr.setRequestHeader("Accept", "text/html")
-  xhr.send();
-  </script>
+</script>
 
--->
+<script>
+  function curtir(formElement){
+    var formData = new FormData(formElement);
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', "{{url_for('curtir',video_id = video.get_id())}}");
+    xhr.onreadystatechange = function() {
+      if(xhr.readyState == 4 && xhr.status == 201) {
+        document.getElementById('div-curtida').innerHTML = xhr.response;
+        };
+      };
+    xhr.send(formData);
+    return false;
+  }
+</script>
+
+ 
+
 {%endblock%}
 

@@ -20,3 +20,11 @@ def home():
     mais_curtidos_lista = [mais_curtidos_organizados_lista[0],mais_curtidos_organizados_lista[1]]
 
     return render_template('index.html', categoria_lista = categoria_list, mais_curtidos_lista = mais_curtidos_lista, categoria = categoria)
+'''
+@app.route("/busca")
+def buscar():
+    video_id = request.args.get('id')
+    
+    periodo = PeriodoDAO().buscar_por_id(int(periodo_id))
+    return render_template("busca.html", periodo=periodo)
+'''
