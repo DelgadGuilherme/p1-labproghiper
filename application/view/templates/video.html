@@ -23,7 +23,7 @@
             <button  class="btn btn-primary" id="curti" onclick="curtir()">Curtir</button>
           </li>
           <li class="list-group-item">
-            <form enctype="multipart/form-data" action="{{url_for('inserir',video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
+            <form enctype="multipart/form-data" action="{{url_for('comentar',video_id = video.get_id())}}" method="POST" onsubmit="return submitForm(this);">
               <div class="row">
                 <div class="col">
                   <label for="inputNome">Nome: </label>

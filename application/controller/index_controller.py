@@ -20,6 +20,7 @@ def home():
     mais_curtidos_lista = [mais_curtidos_organizados_lista[0],mais_curtidos_organizados_lista[1]]
 
     return render_template('index.html', categoria_lista = categoria_list, mais_curtidos_lista = mais_curtidos_lista, categoria = categoria)
+    
 '''
 @app.route("/busca")
 def buscar():

@@ -18,7 +18,7 @@ def video(video_id):
 
 
 @app.route('/video/<video_id>/comentario', methods=['POST'])
-def inserir(video_id):
+def comentar(video_id):
     video_dao = VideoDAO()
     video = video_dao.buscar_video_por_id(int(video_id))
     autor = request.values.get('nome') 
