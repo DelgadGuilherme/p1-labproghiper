@@ -26,7 +26,6 @@ def inserir(video_id):
     comentario = Comentario(autor,coment)
     video.set_comentario(comentario)
     comentario_lista = video.get_comentario()
-    mensagens = ['Produto cadastro com sucesso', 'Imagem armazenada com sucesso']
     return render_template('comentario.html', video = video, comentario_lista = comentario_lista)
 
 
