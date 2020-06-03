@@ -68,7 +68,7 @@
     var xhr = new XMLHttpRequest();
     xhr.open(formElement.method, formElement.action);
     xhr.onreadystatechange = function() {
-      if(xhr.readyState == 4 && xhr.status == 200) {
+      if(xhr.readyState == 4 && xhr.status == 201) {
         document.getElementById('div-comentario').innerHTML = xhr.response;
         };
       };
@@ -83,7 +83,7 @@
     var xhr = new XMLHttpRequest();
     xhr.open('POST', "{{url_for('curtir',video_id = video.get_id())}}");
     xhr.onreadystatechange = function() {
-      if(xhr.readyState == 4 && xhr.status == 201) {
+      if(xhr.readyState == 4 && xhr.status == 200) {
         document.getElementById('div-curtida').innerHTML = xhr.response;
         };
       };

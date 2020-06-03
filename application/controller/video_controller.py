@@ -20,13 +20,12 @@ def video(video_id):
 @app.route('/video/<video_id>/comentario', methods=['POST'])
 def comentar(video_id):
     video_dao = VideoDAO()
-    video = video_dao.buscar_video_por_id(int(video_id))
+    video = video_dao.buscar_video_por_id(video_id)
     autor = request.values.get('nome') 
     coment = request.values.get('coment')
     comentario = Comentario(autor,coment)
     video.set_comentario(comentario)
-    comentario_lista = video.get_comentario()
-    return render_template('comentario.html', video = video, comentario_lista = comentario_lista)
+    return render_template('comentario.html', video = video), 201, {'content-type': "text/html"}
 
 
 @app.route("/video/<video_id>/curti", methods=['POST'])
@@ -34,5 +33,5 @@ def curtir(video_id):
     video_dao = VideoDAO()
     video = video_dao.buscar_video_por_id(int(video_id))
     video_dao.somar_curtida(video)
-    return render_template("curtida.html", video = video), 201, {'content-type': "text/html"}
+    return render_template("curtida.html", video = video), 200, {'content-type': "text/html"}
 
