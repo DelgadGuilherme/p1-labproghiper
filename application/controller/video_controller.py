@@ -27,6 +27,12 @@ def comentar(video_id):
     video.set_comentario(comentario)
     return render_template('comentario.html', video = video), 201, {'content-type': "text/html"}
 
+@app.route('/video/<video_id>/comentario', methods=['DELETE'])
+def apagar(video_id):
+    video_dao = VideoDAO()
+    video = video_dao.buscar_video_por_id(video_id)
+    video_dao.remover_comentario(video)
+    return render_template('comentario.html', video = video), 200, {'content-type': "text/html"}
 
 @app.route("/video/<video_id>/curti", methods=['POST'])
 def curtir(video_id):
