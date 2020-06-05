@@ -29,6 +29,10 @@ class VideoDAO:
         originalCurtida += 1
         video.set_qntCurtida(originalCurtida)
 
-    
+    def get_video_by_titulo(self, titulo):
+        video_lista = list(filter(lambda video : video.get_titulo() == titulo, self._video_list))
+        if len(video_lista) == 0:
+            return None
+        return video_lista[0] 
     
     

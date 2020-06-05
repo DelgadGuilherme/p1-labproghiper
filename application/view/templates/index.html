@@ -33,21 +33,4 @@
 
 </div>
 
-<!--
-<script>
-  var getVideoNome = function(id){
-      let xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-          if(xhr.readyState == 4 && xhr.status == 200){
-              document.getElementById("video-buscado").innerHTML = xhr.response;
-          }
-      }
-      //QUERY PARAMETERS /CAMINHO?PARAM=VALUE&PARAM=VALUE
-      //PATH PARAMETERS /CAMINHO/<ID>/
-      xhr.open("GET", "/video?id=" + id);
-      xhr.setRequestHeader("accept", "text/html");
-      xhr.send();
-  }
-</script>
--->
 {%endblock%}
