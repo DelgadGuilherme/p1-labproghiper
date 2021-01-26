@@ -1,2 +1,2 @@
 # p1-labproghiper
-Projeto feito para a valiação da disciplina de Laboratorio de programação Hipermidia.
+Projeto feito para a avaliação da disciplina de Laboratorio de programação Hipermidia.
